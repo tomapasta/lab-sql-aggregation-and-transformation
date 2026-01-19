@@ -1,12 +1,16 @@
 -- Challenge 1 
 -- 1.1
 SELECT max(length) as max_duration, min(length) as min_duration FROM sakila.film; 
+
 -- 1.2 
 SELECT ROUND(AVG(length)/60, 2) as duration FROM sakila.film; 
+
 -- 2.1 
 SELECT DATEDIFF(min(rental_date )-max (rental_date)) FROM sakila.rental;  
+
 -- 2.2 
 SELECT *, MONTHNAME (rental_date) AS rental_month, DAYNAME (rental_date) AS rental_weekday FROM sakila.rental LIMIT 20;
+
 -- 3
 SELECT title, IFNULL(rental_duration, 'NOT Available') as Rental_Duration FROM sakila.film ORDER BY rental_duration ASC;
 
