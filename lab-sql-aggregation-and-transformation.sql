@@ -1,4 +1,5 @@
 -- Challenge 1 
+
 -- 1.1 Shortest and longest movie durations
 SELECT max(length) as max_duration, min(length) as min_duration FROM sakila.film; 
 
