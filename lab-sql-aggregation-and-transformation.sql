@@ -1,17 +1,20 @@
 -- Challenge 1 
--- 1.1
+-- 1.1 Shortest and longest movie durations
 SELECT max(length) as max_duration, min(length) as min_duration FROM sakila.film; 
 
--- 1.2 
+-- 1.2  Express average movie duration in hours & minutes (no decimals)
 SELECT ROUND(AVG(length)/60, 2) as duration FROM sakila.film; 
 
--- 2.1 
+-- 2.1 Number of days the company has been operating
 SELECT DATEDIFF(min(rental_date )-max (rental_date)) FROM sakila.rental;  
 
--- 2.2 
+-- 2.2 Retrieve rental information and add two additional columns to show the month and weekday of the rental. Return 20 rows of results.
 SELECT *, MONTHNAME (rental_date) AS rental_month, DAYNAME (rental_date) AS rental_weekday FROM sakila.rental LIMIT 20;
 
--- 3
+-- 3 You need to ensure that customers can easily access information about the movie collection. 
+-- To achieve this, retrieve the film titles and their rental duration. 
+-- If any rental duration value is NULL, replace it with the string 'Not Available'. 
+-- Sort the results of the film title in ascending order.
 SELECT title, IFNULL(rental_duration, 'NOT Available') as Rental_Duration FROM sakila.film ORDER BY rental_duration ASC;
 
 -- Challenge 2, 1.1-1.3 
