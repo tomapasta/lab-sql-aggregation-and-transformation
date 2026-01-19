@@ -3,10 +3,10 @@
 SELECT max(length) as max_duration, min(length) as min_duration FROM sakila.film; 
 
 -- 1.2  Express average movie duration in hours & minutes (no decimals)
-SELECT ROUND(AVG(length)/60, 2) as duration FROM sakila.film; 
+SELECT FLOOR(AVG(length) / 60) AS hours, ROUND(AVG(length) % 60) AS minutes FROM sakila.film; 
 
 -- 2.1 Number of days the company has been operating
-SELECT DATEDIFF(min(rental_date )-max (rental_date)) FROM sakila.rental;  
+SELECT DATEDIFF(MAX(rental_date ), MIN (rental_date)) AS days_operation FROM sakila.rental;  
 
 -- 2.2 Retrieve rental information and add two additional columns to show the month and weekday of the rental. Return 20 rows of results.
 SELECT *, MONTHNAME (rental_date) AS rental_month, DAYNAME (rental_date) AS rental_weekday FROM sakila.rental LIMIT 20;
